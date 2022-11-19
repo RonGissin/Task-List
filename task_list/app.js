@@ -24,12 +24,8 @@ function loadEventListeners(){
 
 // get tasks from LS
 function getTasks(){
-    let tasks;
-    if(localStorage.getItem('tasks') === ""){
-        tasks = [];
-    } else {
-        tasks = JSON.parse(localStorage.getItem('tasks'));
-    }
+    const tasks = JSON.parse(localStorage.getItem('tasks')) ?? [];
+    
     tasks.forEach(function(task){
         // create li element 
         const li = document.createElement('li');
@@ -74,12 +70,8 @@ function addTask(e){
 
 // Store Task in Local Storage
 function storeTaskInLocalStorage(task){
-    let tasks;
-    if(localStorage.getItem('tasks') === ""){
-        tasks = [];
-    } else {
-        tasks = JSON.parse(localStorage.getItem('tasks'));
-    }
+    const tasks = JSON.parse(localStorage.getItem('tasks')) ?? [];
+
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
